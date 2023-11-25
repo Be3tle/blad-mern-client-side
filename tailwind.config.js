@@ -9,10 +9,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [
-    require('daisyui'),
-    require('@tailwindcss/forms'),
-    require('flowbite/plugin'),
-    require('preline/plugin'),
-  ],
+  plugins: [require('daisyui'), require('@tailwindcss/forms')],
 };
