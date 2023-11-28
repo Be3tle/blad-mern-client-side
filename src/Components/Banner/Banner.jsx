@@ -1,8 +1,8 @@
 const Banner = () => {
   return (
-    <div>
+    <div className="mb-20">
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen "
         style={{
           backgroundImage:
             'url(https://img.freepik.com/free-photo/people-holding-rubber-heart_1150-18576.jpg?w=900&t=st=1700922311~exp=1700922911~hmac=be2adbe84e42bc72be773a70ff9a0b84da49001382dbd45a2a7a356434e31177)',
