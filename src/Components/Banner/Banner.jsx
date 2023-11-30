@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Banner = () => {
   return (
     <div className="mb-20">
@@ -10,18 +12,22 @@ const Banner = () => {
       >
         <div className="hero-overlay bg-opacity-50"></div>
         <div className="md:mr-72 text-left text-neutral-content">
-          <div className="max-w-md">
+          <div className="max-w-md mt-16">
             <h1 className="text-2xl p-7 uppercase font-medium md:p-0 md:mb-5 md:text-5xl md:font-semibold md:leading-snug">
               Donate blood, <br /> save lives
             </h1>
 
             <div className="flex flex-col w-40">
-              <button className="btn px-2 bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 md:m-0 text-sm md:mt-3">
-                Join as a donor
-              </button>
-              <button className="btn bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 md:m-0 text-sm md:mt-3">
-                Search for a donor
-              </button>
+              <Link to="register">
+                <button className="btn px-2 bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 md:m-0 text-sm md:mt-3">
+                  Join as a donor
+                </button>
+              </Link>
+              <Link to="">
+                <button className="btn bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 md:m-0 text-sm md:mt-3">
+                  Search for a donor
+                </button>
+              </Link>
             </div>
           </div>
         </div>
