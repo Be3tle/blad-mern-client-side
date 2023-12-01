@@ -2,12 +2,12 @@ const Featured = () => {
   return (
     <div>
       <section className="p-6">
-        <div className="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5">
+        <div className="container grid gap-6 mx-auto text-center grid-cols-1 lg:grid-cols-2 xl:grid-cols-5">
           <div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2">
-            <span className="block mb-2 text-red-500">
+            <span className="block mb-2 text-sm s text-red-500">
               HELP THE PEOPLE IN NEED
             </span>
-            <h1 className="text-5xl font-extrabold ">
+            <h1 className="text-2xl md:text-5xl font-extrabold ">
               Welcome to <span className="text-red-600">BLAD</span>
             </h1>
             <p className="my-8">

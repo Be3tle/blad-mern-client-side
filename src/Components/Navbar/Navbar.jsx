@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-2xl mx-auto">
+      <div className="navbar md:fixed z-10 bg-opacity-70 md:bg-opacity-30  bg-black text-white max-w-screen-2xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,13 +36,13 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Donation Requests</a>
+                <a href="/dashboard/my-donation-requests">Donation Requests</a>
               </li>
               <li>
                 <a>Blog</a>
               </li>
               <li>
-                <a>Dashboard</a>
+                <a href="/dashboard">Dashboard</a>
               </li>
               <li>
                 <a>Funding</a>
@@ -52,7 +52,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost text-xl text-red-600">
+          <a
+            href="/"
+            className="btn btn-ghost text-xl ml-32 md:ml-0 text-red-600"
+          >
             BLAD
           </a>
         </div>
@@ -60,14 +63,14 @@ const Navbar = () => {
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Donation Requests</a>
+              <a href="/dashboard/my-donation-requests">Donation Requests</a>
             </li>
 
             <li>
               <a>Blog</a>
             </li>
             <li>
-              <a>Dashboard</a>
+              <a href="/dashboard">Dashboard</a>
             </li>
             <li>
               <a>Funding</a>
@@ -76,14 +79,14 @@ const Navbar = () => {
           {user ? (
             <a
               onClick={handleLogOut}
-              className="btn bg-red-600 border-0 text-white font-normal"
+              className="border-red-600 bg-transparent border-2 hover:bg-transparent hover:border-red-700 px-3 py-1 text-white font-normal rounded-md"
             >
               Logout
             </a>
           ) : (
             <a
               href="login"
-              className="btn bg-red-600 border-0 text-white font-normal"
+              className="border-red-600 bg-transparent border-2 hover:bg-transparent hover:border-red-700 px-3 py-1 text-white font-normal rounded-md"
             >
               Login
             </a>

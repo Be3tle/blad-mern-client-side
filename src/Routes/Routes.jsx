@@ -4,6 +4,9 @@ import Error from '../Pages/Error/Error';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Login/Register';
 import Main from '../Layout/Main';
+import Dashboard from '../Layout/Dashboard';
+import Profile from '../Pages/Dashboard/Profile';
+import MyDonationRequests from '../Pages/Dashboard/MyDonationRequests';
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +25,21 @@ const Router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: '/dashboard/profile',
+        element: <Profile></Profile>,
+      },
+      {
+        path: '/dashboard/my-donation-requests',
+        element: <MyDonationRequests></MyDonationRequests>,
       },
     ],
   },
