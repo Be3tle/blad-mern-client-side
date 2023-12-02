@@ -24,7 +24,7 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/create-donation-request">
               <IoCreate />
-              Create Donation Request
+              Request a Donation
             </NavLink>
           </li>
 

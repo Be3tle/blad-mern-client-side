@@ -45,39 +45,47 @@ const Register = () => {
             >
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
-                  Name
+                  Full Name
                 </label>
                 <input
                   type="text"
-                  required
-                  {...register('name')}
-                  placeholder="Name"
+                  {...register('displayName', { required: true })}
+                  placeholder="Full Name"
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                 />
-              </div>{' '}
+                {errors.displayName && (
+                  <span className="text-red-500">Full Name is required</span>
+                )}
+              </div>
+
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
                   Photo URL
                 </label>
                 <input
                   type="text"
-                  required
-                  {...register('photoURL')}
+                  {...register('photoURL', { required: true })}
                   placeholder="Photo URL"
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                 />
-              </div>{' '}
+                {errors.photoURL && (
+                  <span className="text-red-500">Photo is required</span>
+                )}
+              </div>
+
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
                   Email
                 </label>
                 <input
                   type="email"
-                  required
-                  {...register('email')}
+                  {...register('email', { required: true })}
                   placeholder="Email"
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                 />
+                {errors.email && (
+                  <span className="text-red-500">Email is required</span>
+                )}
               </div>
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
@@ -97,7 +105,11 @@ const Register = () => {
                   <option value="O+">O+</option>
                   <option value="O-">O-</option>
                 </select>
+                {errors.bloodGroup && (
+                  <span className="text-red-500">Blood group is required</span>
+                )}
               </div>
+
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
                   District
@@ -114,7 +126,11 @@ const Register = () => {
                   <option value="Patuakhali">Patuakhali</option>
                   <option value="Barguna">Barguna</option>
                 </select>
+                {errors.district && (
+                  <span className="text-red-500">District is required</span>
+                )}
               </div>
+
               <div className="space-y-1 text-sm">
                 <label htmlFor="username" className="block text-gray-400">
                   Upazila
@@ -133,7 +149,11 @@ const Register = () => {
                   <option value="Tajumuddin">Tajumuddin</option>
                   <option value="Uzirpur">Uzirpur</option>
                 </select>
+                {errors.upazila && (
+                  <span className="text-red-500">Upazila is required</span>
+                )}
               </div>
+
               <div className="space-y-1 text-sm">
                 <label htmlFor="password" className="block text-gray-400">
                   Password

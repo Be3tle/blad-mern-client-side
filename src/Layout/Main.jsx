@@ -5,7 +5,7 @@ import Footer from '../Components/Footer/Footer';
 const Main = () => {
   const location = useLocation();
   const noHeaderFooter =
-    location.pathname.includes('login') ||
+    location.pathname.includes('logina') ||
     location.pathname.includes('registera');
 
   return (
