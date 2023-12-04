@@ -9,6 +9,8 @@ import Profile from '../Pages/Dashboard/Profile';
 import MyDonationRequests from '../Pages/Dashboard/MyDonationRequests';
 import CreateDonationRequest from '../Pages/Dashboard/CreateDonationRequest';
 import MyDashboard from '../Pages/Dashboard/MyDashboard';
+import PrivateRoute from './PrivateRoute';
+import AllUsers from '../Pages/Dashboard/AllUsers';
 
 const Router = createBrowserRouter([
   {
@@ -32,7 +34,11 @@ const Router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <Error></Error>,
     children: [
       {
@@ -50,6 +56,12 @@ const Router = createBrowserRouter([
       {
         path: '/dashboard/create-donation-request',
         element: <CreateDonationRequest></CreateDonationRequest>,
+      },
+
+      // admin routes
+      {
+        path: '/dashboard/all-users',
+        element: <AllUsers></AllUsers>
       },
     ],
   },

@@ -2,33 +2,57 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
-
+  const axiosPublic = useAxiosPublic();
   const [regError, setRegError] = useState('');
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
-    createUser(data.email, data.password)
-      .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser);
-        Swal.fire({
-          title: 'Congrats!',
-          text: 'Successfully registered',
-          icon: 'success',
-          confirmButtonText: 'Cool',
+    createUser(data.email, data.password).then((result) => {
+      const loggedInUser = result.user;
+      console.log(loggedInUser);
+      updateUserProfile(data.name, data.photoURL, data.email)
+        .then(() => {
+          // create user info in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            photoURL: data.photoURL,
+            status: 'active',
+            role: 'donor',
+          };
+          console.log(userInfo);
+          axiosPublic.post('/users', userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log('user added to the database');
+              reset();
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'User created successfully',
+                showConfirmButton: false,
+                timer: 2000,
+              });
+              navigate('/');
+            }
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          setRegError(error.message);
         });
-      })
-      .catch((error) => {
-        console.error(error);
-        setRegError(error.message);
-      });
+    });
   };
 
   return (
@@ -44,24 +68,20 @@ const Register = () => {
               className="space-y-6"
             >
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  Full Name
-                </label>
+                <label className="block text-gray-400">Full Name</label>
                 <input
                   type="text"
-                  {...register('displayName', { required: true })}
+                  {...register('name', { required: true })}
                   placeholder="Full Name"
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                 />
-                {errors.displayName && (
+                {errors.name && (
                   <span className="text-red-500">Full Name is required</span>
                 )}
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  Photo URL
-                </label>
+                <label className="block text-gray-400">Photo URL</label>
                 <input
                   type="text"
                   {...register('photoURL', { required: true })}
@@ -74,9 +94,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  Email
-                </label>
+                <label className="block text-gray-400">Email</label>
                 <input
                   type="email"
                   {...register('email', { required: true })}
@@ -88,9 +106,7 @@ const Register = () => {
                 )}
               </div>
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  Blood Group
-                </label>
+                <label className="block text-gray-400">Blood Group</label>
                 <select
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                   {...register('bloodGroup', { required: true })}
@@ -111,9 +127,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  District
-                </label>
+                <label className="block text-gray-400">District</label>
                 <select
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                   {...register('district', { required: true })}
@@ -132,9 +146,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="username" className="block text-gray-400">
-                  Upazila
-                </label>
+                <label className="block text-gray-400">Upazila</label>
                 <select
                   className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
                   {...register('upazila', { required: true })}
@@ -155,9 +167,7 @@ const Register = () => {
               </div>
 
               <div className="space-y-1 text-sm">
-                <label htmlFor="password" className="block text-gray-400">
-                  Password
-                </label>
+                <label className="block text-gray-400">Password</label>
                 <input
                   type="password"
                   {...register('password', {

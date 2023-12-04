@@ -1,7 +1,35 @@
+import Swal from 'sweetalert2';
 import useRequest from '../../Hooks/useRequest';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const MyDonationRequests = () => {
-  const [request] = useRequest();
+  const [request, refetch] = useRequest();
+  const axiosSecure = useAxiosSecure();
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/requests/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your file has been deleted.',
+              icon: 'success',
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div className="container p-2 mx-auto sm:p-4 text-gray-400">
@@ -21,9 +49,9 @@ const MyDonationRequests = () => {
               <th className="p-3">Recipient Name</th>
               <th className="p-3">Location</th>
               <th className="p-3">Date</th>
-              <th className="p-3">Donor Name</th>
-              <th className="p-3 text-right">Donor Email</th>
+              <th className="p-3">Donor</th>
               <th className="p-3">Status</th>
+              <th className="p-3 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -46,14 +74,29 @@ const MyDonationRequests = () => {
                 </td>
                 <td className="p-3">
                   <p>{item.donorName}</p>
-                </td>
-                <td className="p-3 text-right">
                   <p>{item.donorEmail}</p>
                 </td>
-                <td className="p-3 text-right">
+
+                <td className="">
                   <span className="px-3 py-1 font-semibold rounded-md bg-red-400 text-gray-900">
                     <span>{item.status}</span>
                   </span>
+                </td>
+                <td className="p-3">
+                  <details className="dropdown">
+                    <summary className="m-1 btn">...</summary>
+                    <ul className="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-32">
+                      <li>
+                        <a>Edit</a>
+                      </li>
+                      <li>
+                        <a>View</a>
+                      </li>
+                      <li>
+                        <a onClick={() => handleDelete(item._id)}>Delete</a>
+                      </li>
+                    </ul>
+                  </details>
                 </td>
               </tr>
             ))}

@@ -15,6 +15,7 @@ const CreateDonationRequest = () => {
   } = useForm();
 
   const { user } = useAuth();
+  console.log(user);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -68,8 +69,10 @@ const CreateDonationRequest = () => {
                 <input
                   type="text"
                   name="reqName"
+                  readOnly
                   placeholder="Requester Name"
                   {...register('reqName')}
+                  value={user?.displayName}
                   className="w-full px-4 py-3 rounded-md border-gray-700  text-gray-800 focus:border-violet-400"
                 />
               </div>

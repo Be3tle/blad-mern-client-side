@@ -27,7 +27,7 @@ const Login = () => {
         const user = { email };
 
         axios
-          .post('http://localhost:5000/jwt', user, {
+          .post('https://blad-server.vercel.app/jwt', user, {
             withCredentials: true,
           })
           .then((res) => {
@@ -68,7 +68,7 @@ const Login = () => {
                   required
                   name="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400"
+                  className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-violet-400"
                 />
               </div>
               <div className="space-y-1 text-sm">
@@ -79,7 +79,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="Password"
-                  className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-100 focus:border-violet-400"
+                  className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-800 focus:border-violet-400"
                 />
               </div>
 
