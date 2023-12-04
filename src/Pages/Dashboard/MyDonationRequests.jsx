@@ -16,7 +16,7 @@ const MyDonationRequests = () => {
             <col />
             <col className="w-24" />
           </colgroup>
-          <thead className="bg-gray-700">
+          <thead className="bg-gray-700 ">
             <tr className="text-left">
               <th className="p-3">Recipient Name</th>
               <th className="p-3">Location</th>
