@@ -10,6 +10,12 @@ const Dashboard = () => {
       <div className="w-58 min-h-screen bg-red-400">
         <ul className="menu p-4">
           <li>
+            <NavLink to="/dashboard">
+              <FaUser></FaUser>
+              Dashboard
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/dashboard/profile">
               <FaUser></FaUser>
               My Profile
@@ -27,9 +33,7 @@ const Dashboard = () => {
               Request a Donation
             </NavLink>
           </li>
-
           <div className="divider"></div>
-
           <li>
             <NavLink to="/">
               <FaHome></FaHome>

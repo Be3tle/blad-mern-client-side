@@ -8,6 +8,7 @@ import Dashboard from '../Layout/Dashboard';
 import Profile from '../Pages/Dashboard/Profile';
 import MyDonationRequests from '../Pages/Dashboard/MyDonationRequests';
 import CreateDonationRequest from '../Pages/Dashboard/CreateDonationRequest';
+import MyDashboard from '../Pages/Dashboard/MyDashboard';
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     errorElement: <Error></Error>,
     children: [
+      {
+        path: '/dashboard',
+        element: <MyDashboard></MyDashboard>,
+      },
       {
         path: '/dashboard/profile',
         element: <Profile></Profile>,

@@ -2,8 +2,12 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useRequest from '../../Hooks/useRequest';
 
 const CreateDonationRequest = () => {
+  const axiosSecure = useAxiosSecure();
+  const [, refetch] = useRequest();
   const {
     register,
     handleSubmit,
@@ -28,7 +32,7 @@ const CreateDonationRequest = () => {
         message: data.message,
         status: 'pending',
       };
-      axios.post('http://localhost:5000/requests', reqItem).then((res) => {
+      axiosSecure.post('/requests', reqItem).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
@@ -38,7 +42,7 @@ const CreateDonationRequest = () => {
             showConfirmButton: false,
             timer: 2500,
           });
-          // refetch cart to update the cart items count
+          // refetch req to update the req items count
           refetch();
         }
       });
