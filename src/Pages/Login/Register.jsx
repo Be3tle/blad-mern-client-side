@@ -29,6 +29,9 @@ const Register = () => {
             name: data.name,
             email: data.email,
             photoURL: data.photoURL,
+            bloodGroup: data.bloodGroup,
+            district: data.district,
+            upazila: data.upazila,
             status: 'active',
             role: 'donor',
           };

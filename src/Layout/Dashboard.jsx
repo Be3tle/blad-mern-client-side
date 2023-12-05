@@ -20,6 +20,12 @@ const Dashboard = () => {
       {/* sidebar */}
       <div className="w-58 min-h-screen bg-red-400">
         <ul className="menu p-4">
+          <li className="py-1">
+            <NavLink to="/dashboard">
+              <FaHome></FaHome>
+              Dashboard
+            </NavLink>
+          </li>
           {isAdmin ? (
             <>
               <li>

@@ -35,11 +35,21 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUserProfile = (name, photo, email) => {
+  const updateUserProfile = (
+    name,
+    photo,
+    email,
+    bloodGroup,
+    district,
+    upazila
+  ) => {
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
       email: email,
+      bloodGroup: bloodGroup,
+      district: district,
+      upazila: upazila,
     });
   };
 
