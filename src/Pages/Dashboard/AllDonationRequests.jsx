@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const AllDonationRequests = () => {
   const axiosSecure = useAxiosSecure();
@@ -96,7 +97,9 @@ const AllDonationRequests = () => {
                     <summary className="m-1 btn">...</summary>
                     <ul className="shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-32">
                       <li>
-                        <a>Edit</a>
+                        <Link to={`/dashboard/update-request/${item._id}`}>
+                          <a>Edit</a>
+                        </Link>
                       </li>
                       <li>
                         <a>View</a>

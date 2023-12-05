@@ -9,10 +9,14 @@ const useVolunteer = () => {
     queryKey: [user?.email, 'isVolunteer'],
     enabled: !loading,
     queryFn: async () => {
-      console.log('asking or checking is volunteer', user);
-      const res = await axiosSecure.get(`/users/volunteer/${user.email}`);
-      // console.log(res.data);
-      return res.data?.admin;
+      try {
+        const res = await axiosSecure.get(`/users/volunteer/${user.email}`);
+        return res.data?.volunteer;
+      } catch (error) {
+        console.error('Error fetching volunteer status:', error);
+        // Handle the error gracefully, and consider returning a default value
+        return false;
+      }
     },
   });
   return [isVolunteer, isVolunteerLoading];

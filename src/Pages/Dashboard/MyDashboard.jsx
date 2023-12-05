@@ -14,7 +14,9 @@ const MyDashboard = () => {
             Welcome, {user.displayName}
           </h2>
 
-          {request.length > 0 && <MyDonationRequests></MyDonationRequests>}
+          {request.length > 0 ? (
+            <MyDonationRequests></MyDonationRequests>
+          ) : null}
         </div>
       </div>
     </div>

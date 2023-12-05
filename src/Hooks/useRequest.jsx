@@ -9,6 +9,7 @@ const useRequest = () => {
     queryKey: ['request', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/requests?reqEmail=${user?.email}`);
+      console.log(res.data);
       return res.data;
     },
   });

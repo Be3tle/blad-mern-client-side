@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Banner = () => {
   return (
     <div className="mb-20">
@@ -16,9 +18,11 @@ const Banner = () => {
             </h1>
 
             <div className="flex flex-col w-40">
-              <button className="btn px-2 bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 mb-0 md:m-0 text-sm md:mt-3">
-                Join as a donor
-              </button>
+              <Link to="/register">
+                <button className="btn px-2 bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 mb-0 md:m-0 text-sm md:mt-3">
+                  Join as a donor
+                </button>
+              </Link>
               <button className="btn bg-red-600 text-white hover:bg-red-700 border-0 font-normal m-7 md:m-0 text-sm md:mt-3">
                 Search for a donor
               </button>

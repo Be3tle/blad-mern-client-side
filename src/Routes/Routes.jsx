@@ -5,15 +5,20 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Login/Register';
 import Main from '../Layout/Main';
 import Dashboard from '../Layout/Dashboard';
-import Profile from '../Pages/Dashboard/Profile';
 import MyDonationRequests from '../Pages/Dashboard/MyDonationRequests';
 import CreateDonationRequest from '../Pages/Dashboard/CreateDonationRequest';
 import MyDashboard from '../Pages/Dashboard/MyDashboard';
 import PrivateRoute from './PrivateRoute';
+import AdminRoute from './AdminRoute';
 import AllUsers from '../Pages/Dashboard/AllUsers';
 import DonorHome from '../Pages/Dashboard/DonorHome';
 import AdminHome from '../Pages/Dashboard/AdminHome';
 import AllDonationRequests from '../Pages/Dashboard/AllDonationRequests';
+import UpdateRequest from '../Pages/Dashboard/UpdateRequest';
+import SharedRoute from './SharedRoute';
+import DonationRequests from '../Pages/DonationRequests.jsx/DonationRequests';
+import AddBlog from '../Pages/Dashboard/ContentManagement.jsx';
+import ContentManagement from '../Pages/Dashboard/ContentManagement.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -32,6 +37,10 @@ const Router = createBrowserRouter([
       {
         path: 'register',
         element: <Register></Register>,
+      },
+      {
+        path: 'donation-requests',
+        element: <DonationRequests></DonationRequests>,
       },
     ],
   },
@@ -60,19 +69,41 @@ const Router = createBrowserRouter([
         path: '/dashboard/create-donation-request',
         element: <CreateDonationRequest></CreateDonationRequest>,
       },
+      {
+        path: '/dashboard/update-request/:id',
+        element: <UpdateRequest></UpdateRequest>,
+        loader: ({ params }) =>
+          fetch(`https://blad-server.vercel.app/requests/${params.id}`),
+      },
 
       // admin routes
       {
         path: '/dashboard/admin-home',
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: '/dashboard/all-users',
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: '/dashboard/all-donation-requests',
-        element: <AllDonationRequests></AllDonationRequests>,
+        element: (
+          <SharedRoute>
+            <AllDonationRequests></AllDonationRequests>
+          </SharedRoute>
+        ),
+      },
+      {
+        path: '/dashboard/content-management',
+        element: <ContentManagement></ContentManagement>,
       },
     ],
   },
