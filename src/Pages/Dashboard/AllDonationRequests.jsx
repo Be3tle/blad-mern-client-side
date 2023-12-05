@@ -1,10 +1,10 @@
 import React from 'react';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 
 const AllDonationRequests = () => {
-  
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
   const { data: requests = [], refetch } = useQuery({
     queryKey: ['requests'],
     queryFn: async () => {
@@ -13,9 +13,36 @@ const AllDonationRequests = () => {
     },
   });
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/requests/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your file has been deleted.',
+              icon: 'success',
+            });
+          }
+        });
+      }
+    });
+  };
+
   return (
-  <div className="container p-2 mx-auto sm:p-4 text-gray-400">
-      <h2 className="mb-4 text-2xl font-semibold leading">Donation Requests</h2>
+    <div className="container p-2 mx-auto sm:p-4 text-gray-400">
+      <h2 className="mb-4 text-2xl font-semibold leading">
+        All Donation Requests
+      </h2>
       <div className="overflow-x-auto">
         <table className="min-w-full text-xs">
           <colgroup>
@@ -86,7 +113,7 @@ const AllDonationRequests = () => {
         </table>
       </div>
     </div>
-  )
+  );
 };
 
 export default AllDonationRequests;
