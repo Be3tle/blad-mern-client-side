@@ -1,4 +1,4 @@
-Certainly! Here's a modified version of your project details focusing on how the technologies, including JWT, are implemented in the project:
+Great! Let's incorporate information about Firebase being used for user authentication in the project:
 
 ---
 
@@ -21,12 +21,10 @@ Visit the live site: [Blad - Blood Donation](https://blad-donate.web.app/)
 Blad incorporates a robust user role system, ensuring that each user has specific privileges and access levels within the platform.
 
 1. **Admin Role:**
-
    - **View and Edit All Users:** Admins have the authority to view and edit information for all users registered on the platform.
    - **Manage Donation Requests:** Admins can oversee and modify details related to all donation requests.
 
 2. **Volunteer Role:**
-
    - **View Donation Requests:** Volunteers can see a list of donation requests.
    - **Update Request Status:** Volunteers have the capability to update the status of donation requests, providing real-time information on their progress.
 
@@ -46,10 +44,16 @@ Blad incorporates a robust user role system, ensuring that each user has specifi
 - **MongoDB:** Implemented as a NoSQL database for storing and retrieving user and donation request information.
 - **Express.js:** Employed as the web application framework for Node.js, facilitating the creation of robust and scalable APIs.
 - **JWT (JSON Web Token):** Implemented for secure authentication and authorization. JWTs are issued upon successful login and are sent with each subsequent request to authenticate the user's identity.
+
+#### User Authentication
+
+- **Firebase Authentication:** Utilized for user authentication, providing a secure and reliable authentication system for Blad's users.
+
+#### HTTP Requests
+
 - **Axios:** Used for making HTTP requests from the frontend to the backend, facilitating seamless communication between the client and server.
 
 #### Deployment
 
 - **Firebase:** Used as the platform for hosting and deploying the Blad website, ensuring a reliable and accessible user experience.
 
-Thank you for using Blad - your contribution can help save lives!
