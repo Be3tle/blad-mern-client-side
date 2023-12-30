@@ -46,6 +46,7 @@ Blad incorporates a robust user role system, ensuring that each user has specifi
 - **MongoDB:** Implemented as a NoSQL database for storing and retrieving user and donation request information.
 - **Express.js:** Employed as the web application framework for Node.js, facilitating the creation of robust and scalable APIs.
 - **JWT (JSON Web Token):** Implemented for secure authentication and authorization. JWTs are issued upon successful login and are sent with each subsequent request to authenticate the user's identity.
+- **Axios:** Used for making HTTP requests from the frontend to the backend, facilitating seamless communication between the client and server.
 
 #### Deployment
 
