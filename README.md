@@ -1,4 +1,4 @@
-Great! Let's incorporate information about Firebase being used for user authentication in the project:
+Certainly! Let's add a "Getting Started" section to guide users on how to set up and run the project:
 
 ---
 
@@ -21,10 +21,12 @@ Visit the live site: [Blad - Blood Donation](https://blad-donate.web.app/)
 Blad incorporates a robust user role system, ensuring that each user has specific privileges and access levels within the platform.
 
 1. **Admin Role:**
+
    - **View and Edit All Users:** Admins have the authority to view and edit information for all users registered on the platform.
    - **Manage Donation Requests:** Admins can oversee and modify details related to all donation requests.
 
 2. **Volunteer Role:**
+
    - **View Donation Requests:** Volunteers can see a list of donation requests.
    - **Update Request Status:** Volunteers have the capability to update the status of donation requests, providing real-time information on their progress.
 
@@ -57,3 +59,31 @@ Blad incorporates a robust user role system, ensuring that each user has specifi
 
 - **Firebase:** Used as the platform for hosting and deploying the Blad website, ensuring a reliable and accessible user experience.
 
+## Getting Started
+
+To run the Blad project locally, follow these steps:
+
+1. **Clone the Frontend Repository:**
+
+   ```bash
+   git clone https://github.com/Be3tle/blad-mern-client-side.git
+   ```
+
+2. **Install Backend Dependencies:**
+
+   ```bash
+   cd blad-mern-client-side
+   npm install
+   ```
+
+3. **Run the Backend Server:**
+
+   ```bash
+   npm start
+   ```
+
+4. **Access the Blad Platform:**
+
+   Open your browser and visit [http://localhost:3000/](http://localhost:3000/) to explore the Blad platform locally.
+
+Now you can use and contribute to the Blad project. If you encounter any issues or have suggestions for improvements, please feel free to reach out or submit a pull request. Thank you for your interest in Blad!
