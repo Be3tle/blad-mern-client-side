@@ -19,6 +19,7 @@ import SharedRoute from './SharedRoute';
 import DonationRequests from '../Pages/DonationRequests.jsx/DonationRequests';
 import AddBlog from '../Pages/Dashboard/ContentManagement.jsx';
 import ContentManagement from '../Pages/Dashboard/ContentManagement.jsx';
+import Donors from '../Pages/Donors/Donors.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const Router = createBrowserRouter([
       {
         path: 'donation-requests',
         element: <DonationRequests></DonationRequests>,
+      },
+      {
+        path: 'search-donors',
+        element: <Donors></Donors>,
       },
     ],
   },
