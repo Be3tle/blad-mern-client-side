@@ -1,7 +1,3 @@
-Certainly! Let's add a "Getting Started" section to guide users on how to set up and run the project:
-
----
-
 # Blad - Blood Donation Platform
 
 Welcome to Blad, a blood donation website designed to streamline the blood donation process, connecting donors, volunteers, and administrators for a more efficient and life-saving experience.
