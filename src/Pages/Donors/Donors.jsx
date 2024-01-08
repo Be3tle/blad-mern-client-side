@@ -7,6 +7,8 @@ const Donors = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [donors, setDonors] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     const fetchDonors = async () => {
       try {
@@ -22,16 +24,35 @@ const Donors = () => {
     }
   }, [axiosPublic, user]);
 
+  const handleSearch = () => {
+    const filteredDonors = donors.filter(
+      (donor) =>
+        donor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        donor.bloodGroup.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setDonors(filteredDonors);
+  };
+
   return (
     <div>
       <div className="flex justify-center items-center flex-col pt-32">
         <div className="">
-          {' '}
-          {/* border-2 border-gray-700 rounded-lg border-opacity-10 p-10 */}
           <h1 className="text-2xl font-semibold mb-4 text-center">
             All Donors
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="mb-4 flex items-center justify-between">
+            <input
+              type="text"
+              placeholder="Search by name or blood group"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="form-input mr-2 rounded-lg border-gray-600 border-opacity-30"
+            />
+            <button className="btn" onClick={handleSearch}>
+              Search
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-12">
             {donors.map((donor) => (
               <DonorsCard
                 key={donor._id}
