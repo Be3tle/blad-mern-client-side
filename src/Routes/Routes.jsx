@@ -45,7 +45,11 @@ const Router = createBrowserRouter([
       },
       {
         path: 'search-donors',
-        element: <Donors></Donors>,
+        element: (
+          <PrivateRoute>
+            <Donors></Donors>
+          </PrivateRoute>
+        ),
       },
     ],
   },
