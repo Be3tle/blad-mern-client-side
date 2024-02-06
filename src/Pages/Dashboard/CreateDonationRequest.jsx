@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useRequest from '../../Hooks/useRequest';
