@@ -2,11 +2,10 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import useRequest from '../../Hooks/useRequest';
 
 const CreateDonationRequest = () => {
   const axiosSecure = useAxiosSecure();
-  const [, refetch] = useRequest();
+
   const {
     register,
     handleSubmit,
