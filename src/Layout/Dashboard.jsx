@@ -82,7 +82,7 @@ const Dashboard = () => {
                   </NavLink>
                 </li>
               </>
-            ) : null /* If none of the conditions are met, render null */
+            ) : null
           }
           {/* shared */}
           <div className="divider"></div>
